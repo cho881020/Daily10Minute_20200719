@@ -55,6 +55,12 @@ class LoginActivity : BaseActivity() {
 //                        추출된 토큰을 기기에 저장해야함.
                         ContextUtil.setLoginUserToken(mContext, token)
 
+//                        메인화면으로 진입 => 로그인화면 종료
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        startActivity(myIntent)
+
+                        finish()
+
 
                     }
                     else {
