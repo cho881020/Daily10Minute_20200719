@@ -40,9 +40,14 @@ class MainActivity : BaseActivity() {
                     else {
 //                        로그인 실패
 
+//                        로그인 실패 사유를 서버가 알려주는 message를 받아서 출력
+
+                        val failReason = json.getString("message")
+
+
 //                        서버 통신 중에 UI에 영향을 주려면 runOnUiThread 활용하자
                         runOnUiThread {
-                            Toast.makeText(mContext, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext, failReason, Toast.LENGTH_SHORT).show()
                         }
 
 
