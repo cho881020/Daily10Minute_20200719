@@ -5,6 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".SignUpActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이메일" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="가입할 이메일 입력"
+        android:layout_marginTop="5dp"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/pwEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 입력 (8자 이상)"
+        android:inputType="textPassword"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/pwCheckResultTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호를 입력해주세요." />
 
 </LinearLayout>
