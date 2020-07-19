@@ -42,7 +42,18 @@ class LoginActivity : BaseActivity() {
 //                    그 외의 모든 숫자는 로그인 실패.
 
                     if (codeNum == 200) {
-//                        로그인 성공
+//                        로그인 성공 => 서버가 알려주는 토큰값을 받아서 기기에 저장
+
+//                        토큰값 추출
+//                        data로 이름 붙은 {  } 를 우선 추출
+                        val data = json.getJSONObject("data")
+
+//                        data { } 내부에서 token String을 추출
+                        val token = data.getString("token")
+
+//                        추출된 토큰을 기기에 저장해야함.
+
+
                     }
                     else {
 //                        로그인 실패
