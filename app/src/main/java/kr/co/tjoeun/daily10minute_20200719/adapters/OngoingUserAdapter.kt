@@ -41,6 +41,9 @@ class OngoingUserAdapter(
 //        도전 ~일차 가공
         daysTxt.text = "도전 ${data.projectDays}일차"
 
+//        프사를 띄워주자. => 0번쨰 프사가 제일 최근 업로드 프사. => 0번째 사진을 무조건 보여주자.
+        Glide.with(mContext).load(data.profileImageList[0].imageUrl).into(profileImg)
+
 
         return row
     }
