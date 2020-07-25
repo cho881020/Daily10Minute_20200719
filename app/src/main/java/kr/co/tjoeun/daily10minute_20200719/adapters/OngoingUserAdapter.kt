@@ -27,6 +27,21 @@ class OngoingUserAdapter(
 
         val row = tempRow!!
 
+        val profileImg = row.findViewById<ImageView>(R.id.profileImg)
+        val nickNameTxt = row.findViewById<TextView>(R.id.nickNameTxt)
+        val emailTxt = row.findViewById<TextView>(R.id.emailTxt)
+        val daysTxt = row.findViewById<TextView>(R.id.daysTxt)
+
+
+        val data = mList[position]
+
+        nickNameTxt.text = data.nickName
+        emailTxt.text = data.email
+
+//        도전 ~일차 가공
+        daysTxt.text = "도전 ${data.projectDays}일차"
+
+
         return row
     }
 

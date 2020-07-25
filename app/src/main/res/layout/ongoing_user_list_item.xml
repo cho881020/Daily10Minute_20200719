@@ -14,6 +14,7 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@mipmap/ic_launcher"
@@ -26,6 +27,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/nickNameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
@@ -33,6 +35,7 @@
                 android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/emailTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -47,6 +50,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/daysTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="도전 ~일차" />
