@@ -1,5 +1,6 @@
 package kr.co.tjoeun.daily10minute_20200719
 
+import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10minute_20200719.adapters.ProjectAdapter
@@ -21,6 +22,20 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+//        각 프로젝트를 눌렀을때 상세화면으로 이동
+        projectListView.setOnItemClickListener { parent, view, position, id ->
+
+            val clickedProject = mProjectList[position]
+
+            val myIntent = Intent(mContext, ViewProjectDetailActivity::class.java)
+
+//            몇번 프로젝트가 눌렸는지 프로젝트의 id값만 전달
+            myIntent.putExtra("projectId", clickedProject.id)
+
+            startActivity(myIntent)
+
+        }
 
     }
 
