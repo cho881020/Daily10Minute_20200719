@@ -1,8 +1,10 @@
 package kr.co.tjoeun.daily10minute_20200719
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_view_project_detail.*
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
@@ -25,6 +27,29 @@ class ViewProjectDetailActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        joinProjectBtn.setOnClickListener {
+
+//            정말 참여할건지? 물어보자.
+
+            val alert = AlertDialog.Builder(mContext)
+            alert.setTitle("프로젝트 참여 신청")
+            alert.setMessage("정말 프로젝트에 참여하시겠습니까?")
+            alert.setPositiveButton("예", DialogInterface.OnClickListener { dialog, which ->
+
+//                실제로 서버에 참여 신청
+                ServerUtil.postRequestProjectJoin(mContext, mProjectId, object : ServerUtil.JsonResponseHandler {
+                    override fun onResponse(json: JSONObject) {
+
+                    }
+
+                })
+
+            })
+            alert.setNegativeButton("아니오", null)
+            alert.show()
+
+        }
 
         viewOngoingUsersBtn.setOnClickListener {
 
