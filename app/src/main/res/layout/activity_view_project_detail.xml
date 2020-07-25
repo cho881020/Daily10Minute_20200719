@@ -117,5 +117,18 @@
         android:layout_height="1dp"
         android:background="#A0A0A0" />
 
+    <Button
+        android:id="@+id/viewOngoingUsersBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="참여 인원 명단 보기" />
+
+    <Button
+        android:id="@+id/joinProjectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나도 참여하기" />
+
 
 </LinearLayout>
