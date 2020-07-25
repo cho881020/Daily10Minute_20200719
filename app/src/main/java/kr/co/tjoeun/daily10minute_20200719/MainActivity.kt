@@ -1,7 +1,8 @@
 package kr.co.tjoeun.daily10minute_20200719
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+import kr.co.tjoeun.daily10minute_20200719.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
 import org.json.JSONObject
@@ -9,6 +10,8 @@ import org.json.JSONObject
 class MainActivity : BaseActivity() {
 
     val mProjectList = ArrayList<Project>()
+
+    lateinit var mProjectAdapter : ProjectAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,9 @@ class MainActivity : BaseActivity() {
 //        서버에서 받아오는 기능 실행
         getProjectListFromServer()
 
+//        서버에서 받아오고 난 후에 어댑터 연결
+        mProjectAdapter = ProjectAdapter(mContext, R.layout.project_list_item, mProjectList)
+        projectListView.adapter = mProjectAdapter
 
     }
 

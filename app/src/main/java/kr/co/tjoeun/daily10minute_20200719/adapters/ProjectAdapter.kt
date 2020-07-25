@@ -18,7 +18,7 @@ class ProjectAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         if (tempRow == null) {
-            tempRow = inf.inflate(R.layout.project_list_view, null)
+            tempRow = inf.inflate(R.layout.project_list_item, null)
         }
 
         val row = tempRow!!
