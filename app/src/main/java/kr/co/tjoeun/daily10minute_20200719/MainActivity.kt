@@ -64,6 +64,16 @@ class MainActivity : BaseActivity() {
 
                 }
 
+//                목록이 추가되는 시점이 => 어댑터 연결 이후 일 수도 있다.
+//                어댑터가 연결되고 나서 => 내용이 추가되는 것일 수도 있다.
+//                새로고침 시켜줄 필요가 있다.
+
+                runOnUiThread {
+                    mProjectAdapter.notifyDataSetChanged()
+                }
+
+
+
             }
 
         })
