@@ -14,6 +14,7 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/titleTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="프로젝트 제목"
@@ -21,6 +22,7 @@
             android:textSize="20sp"/>
 
         <TextView
+            android:id="@+id/userCountTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="참여중 인원 : ~명"
@@ -29,6 +31,7 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/userListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

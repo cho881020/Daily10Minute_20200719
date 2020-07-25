@@ -2,6 +2,8 @@ package kr.co.tjoeun.daily10minute_20200719
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
+import org.json.JSONObject
 
 class ViewOngoingUsersActivity : BaseActivity() {
 
@@ -21,6 +23,20 @@ class ViewOngoingUsersActivity : BaseActivity() {
     override fun setValues() {
 
         mProjectId = intent.getIntExtra("projectId", 0)
+
+        getOngoingUsersFromServer()
+    }
+
+//    진행중인 사람 명단 + 상세정보 불러오기
+
+    fun getOngoingUsersFromServer() {
+
+        ServerUtil.getRequestProjectDetailWithUsers(mContext, mProjectId, object : ServerUtil.JsonResponseHandler {
+            override fun onResponse(json: JSONObject) {
+
+            }
+
+        })
 
     }
 

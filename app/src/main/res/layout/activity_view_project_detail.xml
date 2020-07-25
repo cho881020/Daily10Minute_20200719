@@ -110,6 +110,18 @@
             android:text="~명 도전 진행중"
             android:textColor="#000000"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/viewOngoingUsersBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="명단 확인" />
+
+
     </LinearLayout>
 
     <TextView
@@ -117,12 +129,11 @@
         android:layout_height="1dp"
         android:background="#A0A0A0" />
 
-    <Button
-        android:id="@+id/viewOngoingUsersBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="참여 인원 명단 보기" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/joinProjectBtn"
