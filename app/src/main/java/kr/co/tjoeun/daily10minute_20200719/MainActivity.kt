@@ -51,6 +51,10 @@ class MainActivity : BaseActivity() {
 
 //                    JSON => Project로 변환
 
+                    val project = Project.getProjectFromJson(projectObj)
+
+//                    프로젝트 목록 변수에 추가
+                    mProjectList.add(project)
 
                 }
 
