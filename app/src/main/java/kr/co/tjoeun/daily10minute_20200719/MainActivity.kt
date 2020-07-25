@@ -36,6 +36,24 @@ class MainActivity : BaseActivity() {
         ServerUtil.getRequestProjectList(mContext, object : ServerUtil.JsonResponseHandler {
             override fun onResponse(json: JSONObject) {
 
+                val data = json.getJSONObject("data")
+                val projects = data.getJSONArray("projects")
+
+//                projects JSONArray 내부의 데이터들을 추출
+//                반복문 i 로 돌면서 하나하나 가져오자.
+
+                for (i in 0 until projects.length()) {
+
+//                    i번째 JSONObject를 추출하자
+                    val projectObj = projects.getJSONObject(i)
+
+//                    프로젝트 정보 JSONObject => Project 형태의 인스턴스로 변환 => 목록에 담아야함.
+
+//                    JSON => Project로 변환
+
+
+                }
+
             }
 
         })
