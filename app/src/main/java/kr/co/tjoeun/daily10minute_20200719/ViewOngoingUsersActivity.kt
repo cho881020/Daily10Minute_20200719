@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_view_ongoing_users.*
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
+import kr.co.tjoeun.daily10minute_20200719.datas.User
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
 import org.json.JSONObject
 
@@ -13,6 +14,9 @@ class ViewOngoingUsersActivity : BaseActivity() {
 
 //    서버에서 받아온 프로젝트 정보
     lateinit var mProject : Project
+
+//    사용자 정보를 저장할 목록
+    val mOngoingUserList = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,9 @@ class ViewOngoingUsersActivity : BaseActivity() {
                 val projectObj = data.getJSONObject("project")
 
                 mProject = Project.getProjectFromJson(projectObj)
+
+//                projectObj 내부에 ongoing_users 배열을 활용해서 사용자 명단을 목록에 저장
+
 
 //                프로젝트 정보 UI에 반영
 
