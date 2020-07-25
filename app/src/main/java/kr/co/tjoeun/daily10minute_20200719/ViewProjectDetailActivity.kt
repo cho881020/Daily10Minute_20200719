@@ -57,6 +57,10 @@ class ViewProjectDetailActivity : BaseActivity() {
                     Glide.with(mContext).load(mProject.imageUrl).into(projectImg)
 
                     projectTitleTxt.text = mProject.title
+                    projectDescriptionTxt.text = mProject.description
+
+                    proofMethodTxt.text = mProject.proofMethod
+                    challengerCountTxt.text = "${mProject.ongoingUserCount}명 도전 진행중"
 
                 }
 
