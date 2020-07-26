@@ -40,6 +40,25 @@ class Proof {
 //            sdf 를 이용해서 => 캘린더 변수에 시간 대입
             p.proofTime.time = sdf.parse(proofTimeString)
 
+
+//            images JSONArray 내부의 => JSONObject 내부의 => img_url 들을 String으로 얻어내서
+//            p.이미지주소목록에  저장
+
+            val images = json.getJSONArray("images")
+
+            for (i in 0 until images.length()) {
+//                i가 0에서부터 ~ 목록 길이 직전까지 증가.
+
+                val imageObj = images.getJSONObject(i)
+
+//                imageObj 내부의 img_url String을 얻어내서 => 목록에 저장
+                val url = imageObj.getString("img_url")
+
+                p.imageUrlList.add(url)
+
+            }
+
+
             return p
         }
 
