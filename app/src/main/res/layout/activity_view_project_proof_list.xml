@@ -39,6 +39,17 @@
                 android:textSize="17sp"
                 android:text="확인할날짜 선택" />
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/changeProofDateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜 변경" />
+
         </LinearLayout>
 
     </LinearLayout>
