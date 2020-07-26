@@ -30,6 +30,18 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+//        다른 사람들의 참여 인증 확인하는 버튼
+        viewOtherProofBtn.setOnClickListener {
+
+//            인증 확인화면 진입 => 어떤 프로젝트에 대해서 인지
+//            id값만 인증 확인화면에 전달.
+
+            val myIntent = Intent(mContext, ViewProjectProofListActivity::class.java)
+            myIntent.putExtra("projectId", mProjectId)
+            startActivity(myIntent)
+
+        }
+
         joinProjectBtn.setOnClickListener {
 
 //            정말 참여할건지? 물어보자.

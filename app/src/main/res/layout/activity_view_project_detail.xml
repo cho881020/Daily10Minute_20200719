@@ -149,16 +149,19 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/uploadProofBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="오늘의 참여 인증하기"/>
 
         <Button
+            android:id="@+id/viewOtherProofBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="다른 사람들의 인증 보러 가기" />
 
         <Button
+            android:id="@+id/giveUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="중도 포기하기" />
