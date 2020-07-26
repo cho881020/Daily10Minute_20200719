@@ -19,6 +19,9 @@ class Proof {
     var likeCount = 0
     var replyCount = 0
 
+//    내가 좋아요를 찍어둔 게시글인가?
+    var myLike = false
+
 
     companion object {
 
@@ -74,6 +77,9 @@ class Proof {
 //            좋아요 / 댓글 갯수도 같이 파싱
             p.likeCount = json.getInt("like_count")
             p.replyCount = json.getInt("reply_count")
+
+//            내가 좋아요를 찍은 글인지도 파싱
+            p.myLike = json.getBoolean("my_like")
 
             return p
         }

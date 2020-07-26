@@ -72,6 +72,11 @@ class ProofAdapter(
         likeBtn.text = "좋아요 ${data.likeCount}개"
         replyBtn.text = "답글 ${data.replyCount}개"
 
+//        만약, 이미 좋아요를 찍은 글이라면?
+        if (data.myLike) {
+            likeBtn.text = "좋아요 취소 ${data.likeCount}개"
+        }
+
 //        좋아요 버튼 눌리는 이벤트
         likeBtn.setOnClickListener {
 
