@@ -38,6 +38,9 @@ class ViewProjectProofListActivity : BaseActivity() {
                 val sdf = SimpleDateFormat("yyyy년 M월 d일")
                 proofDateTxt.text = sdf.format(proofDate.time)
 
+//                변경된 날짜의 인증 내역 가져오기
+                getProofListFromServer()
+
 
 
             }, proofDate.get(Calendar.YEAR), proofDate.get(Calendar.MONTH), proofDate.get(Calendar.DAY_OF_MONTH))
@@ -58,6 +61,16 @@ class ViewProjectProofListActivity : BaseActivity() {
         val proofDateStr = sdf.format(proofDate.time)
 
         proofDateTxt.text = proofDateStr
+
+
+//        오늘 날짜의 인증 내역 가져오기
+        getProofListFromServer()
+
+    }
+
+//    서버에서 이 프로젝트의 날짜별 인증 내역을 가져오는 기능
+
+    fun getProofListFromServer() {
 
 
 
