@@ -49,6 +49,21 @@ class ProofAdapter(
         proofTimeTxt.text = sdf.format(data.proofTime.time)
 
 
+//        그림이 있느냐 ? 없느냐 구별 해야함. => How? data의 이미지주소목록의 크기값 확인
+
+        if (data.imageUrlList.size == 0) {
+//            그림이 첨부가 안된 경우 => 이미지뷰 숨김
+            proofImg.visibility = View.GONE
+        }
+        else {
+//            한장 이상의 그림이 첨부된 경우 => 이미지뷰 표시
+            proofImg.visibility = View.VISIBLE
+
+//            맨 앞에 첨부된 그림을 실제로 표시
+            Glide.with(mContext).load(data.imageUrlList[0]).into(proofImg)
+
+        }
+
 
         return row
     }
