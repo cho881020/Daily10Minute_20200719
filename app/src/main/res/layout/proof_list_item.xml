@@ -59,6 +59,31 @@
             android:scaleType="centerCrop"
             android:layout_marginTop="10dp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/likeBtn"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:text="좋아요 0개" />
+
+            <Button
+                android:id="@+id/replyBtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:text="답글 0개" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
