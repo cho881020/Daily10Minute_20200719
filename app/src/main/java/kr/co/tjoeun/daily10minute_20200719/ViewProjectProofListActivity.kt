@@ -103,10 +103,24 @@ class ViewProjectProofListActivity : BaseActivity() {
 //                이 화면에서 보는 프로젝트 정보 대입
                 mProject = Project.getProjectFromJson(projectObj)
 
+//                인증글 목록을 파싱해서 => 멤버 목록에 반영
+
+                val proofs = projectObj.getJSONArray("proofs")
+
+                for (i in 0 until proofs.length()) {
+                    val proofObj = proofs.getJSONObject(i)
+//                    JSONObject => Proof로 변환 (우리가 직접 만든 클래스 고유 기능 사용)
+                    val proof = Proof.getProofFromJson(proofObj)
+//                    뽑힌 Proof 타입의 변수를 목록에 추가
+                    mProofList.add(proof)
+                }
+
 //                프로젝트 제목 등 UI 반영 작업
                 runOnUiThread {
 
                     projectTitleTxt.text = mProject.title
+
+//
 
                 }
 
