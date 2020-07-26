@@ -1,17 +1,18 @@
 package kr.co.tjoeun.daily10minute_20200719.adapters
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minute_20200719.R
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
+import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 
 class ProofAdapter(
@@ -70,6 +71,30 @@ class ProofAdapter(
 //        좋아요 / 답글 버튼의 문구 수정
         likeBtn.text = "좋아요 ${data.likeCount}개"
         replyBtn.text = "답글 ${data.replyCount}개"
+
+//        좋아요 버튼 눌리는 이벤트
+        likeBtn.setOnClickListener {
+
+//            data.id 를 이용하면, 몇번 인증글인지 알아낼 수 있다
+
+            ServerUtil.postRequestLikeProof(mContext, data.id, object : ServerUtil.JsonResponseHandler {
+                override fun onResponse(json: JSONObject) {
+
+                    val message = json.getString("message")
+
+//                    어댑터에는 runOnUiThread 기능이 없다.
+//                    그래도 어떻게든 UIThread 안에서 UI반영을 해야 앱이 동작함.
+                    val myHandler = Handler(Looper.getMainLooper())
+
+                    myHandler.post {
+                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+            })
+
+        }
 
         return row
     }

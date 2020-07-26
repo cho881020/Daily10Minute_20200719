@@ -130,6 +130,59 @@ class ServerUtil {
 
         }
 
+//        인증글 좋아요 기능
+
+        fun postRequestLikeProof(context: Context, proofId: Int, handler: JsonResponseHandler?) {
+
+//            앱을 클라이언트 역할로 동작하게 해주는 변수
+            val client = OkHttpClient()
+
+//            어떤 주소로 가야하는지 URL을 호스트주소(BASE_URL) + 기능주소 결합
+            val urlString = "${BASE_URL}/like_proof"
+
+//            서버에 전달할 데이터를 폼바디에 담아주자. (POST - formData)
+            val formData = FormBody.Builder()
+                .add("proof_id", proofId.toString())
+                .build()
+
+//            서버에 요청할 모든 정보를 담아주는 request 변수 생성
+            val request = Request.Builder()
+                .url(urlString)
+                .post(formData)
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context)) // API에서 헤더를 요구하면 여기서 첨부해야함.
+                .build()
+
+//            완성된 Request를 가지고 실제로 서버로 출발.
+//            서버는 Request를 받으면 => Response를 내려줌.
+//            그에 대한 처리도 필요함
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+//                    서버에 연결 자체를 실패한 경우
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+//                    일단 서버에 연결은 되어서 응답을 받아온 경우.
+//                    그 응답에 뭐라고 적혀있는지 파악 => 화면(Activity)에 전달
+
+//                    서버가 내려준 응답의 내용을 String으로 저장
+                    val bodyString = response.body!!.string()
+
+//                    String을 => 분석하기 쉬운 Json 클래스로 변환.
+                    val json = JSONObject(bodyString)
+
+                    Log.d("서버응답", json.toString())
+
+//                    완성된 json을 액티비티에서 처리하도록 전달.
+                    handler?.onResponse(json)
+
+
+                }
+
+            })
+
+        }
+
 
 //        회원가입 요청을 해주는 기능
 
