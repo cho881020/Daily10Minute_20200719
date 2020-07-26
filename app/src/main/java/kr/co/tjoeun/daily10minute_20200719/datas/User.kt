@@ -23,7 +23,13 @@ class User {
             u.id = json.getInt("id")
             u.email = json.getString("email")
             u.nickName = json.getString("nick_name")
-            u.projectDays = json.getInt("project_days")
+
+//            projectDays는 특정 상황에서만 첨부되는 응답 내용
+//            null인지 아닌지 체크해서 파싱
+
+            if (!json.isNull("project_days")) {
+                u.projectDays = json.getInt("project_days")
+            }
 
 //            사용자가 갖고있는 프사 목록을 채우자
 

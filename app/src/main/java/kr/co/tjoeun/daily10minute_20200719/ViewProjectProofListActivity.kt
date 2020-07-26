@@ -3,6 +3,7 @@ package kr.co.tjoeun.daily10minute_20200719
 import android.app.DatePickerDialog
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_view_project_proof_list.*
+import kr.co.tjoeun.daily10minute_20200719.adapters.ProofAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
@@ -21,6 +22,9 @@ class ViewProjectProofListActivity : BaseActivity() {
 
 //    인증 게시글들이 담길 목록
     val mProofList = ArrayList<Proof>()
+
+//    인증글 뿌려주는 어댑터
+    lateinit var mProofAdapter : ProofAdapter
 
 //    인증을 확인할 날짜를 저장해주는 변수
 //    proofDate => 기본값이 현재 시간으로 저장됨.
@@ -83,6 +87,11 @@ class ViewProjectProofListActivity : BaseActivity() {
 //        오늘 날짜의 인증 내역 가져오기
         getProofListFromServer()
 
+
+//        어댑터와 / 리스트뷰 연결
+        mProofAdapter = ProofAdapter(mContext, R.layout.proof_list_item, mProofList)
+        proofListView.adapter = mProofAdapter
+
     }
 
 //    서버에서 이 프로젝트의 날짜별 인증 내역을 가져오는 기능
@@ -120,7 +129,8 @@ class ViewProjectProofListActivity : BaseActivity() {
 
                     projectTitleTxt.text = mProject.title
 
-//
+//                  리스트뷰의 내용 반영 => UI에 영향을 주는 행위
+                    mProofAdapter.notifyDataSetChanged()
 
                 }
 
