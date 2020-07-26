@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minute_20200719.R
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
+import java.text.SimpleDateFormat
 
 class ProofAdapter(
     val mContext:Context,
@@ -39,6 +40,14 @@ class ProofAdapter(
 
         userNickNameTxt.text = data.user.nickName
         Glide.with(mContext).load(data.user.profileImageList[0].imageUrl).into(userProfileImg)
+
+//        인증일시 : 2020년 6월 9일 오전 2시 8분 양식으로 출력
+//        data의 proofTime 변수를 활용하자
+//        String으로 변환 => SimpleDateFormat의 format 기능 활용
+
+        val sdf = SimpleDateFormat("yyyy년 M월 d일 a h시 m분")
+        proofTimeTxt.text = sdf.format(data.proofTime.time)
+
 
 
         return row
