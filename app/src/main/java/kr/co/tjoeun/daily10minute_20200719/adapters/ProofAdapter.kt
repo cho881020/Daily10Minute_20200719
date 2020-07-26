@@ -87,12 +87,24 @@ class ProofAdapter(
 
                     val message = json.getString("message")
 
+                    val dataObj = json.getJSONObject("data")
+                    val like = dataObj.getJSONObject("like")
+
+
+//                    변경된 좋아요 갯수 / 내 좋아요 여부를 data의 변수에 반영
+                    data.likeCount = like.getInt("like_count")
+                    data.myLike = like.getBoolean("my_like")
+
 //                    어댑터에는 runOnUiThread 기능이 없다.
 //                    그래도 어떻게든 UIThread 안에서 UI반영을 해야 앱이 동작함.
                     val myHandler = Handler(Looper.getMainLooper())
 
                     myHandler.post {
                         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+
+//                        리스트 어댑터 새로고침
+                        notifyDataSetChanged()
+
                     }
 
                 }
