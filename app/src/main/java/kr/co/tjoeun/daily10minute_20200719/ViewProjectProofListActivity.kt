@@ -105,6 +105,11 @@ class ViewProjectProofListActivity : BaseActivity() {
         ServerUtil.getRequestProjectDetailWithProofList(mContext, mProjectId, dateStr, object : ServerUtil.JsonResponseHandler {
             override fun onResponse(json: JSONObject) {
 
+//                날짜가 바뀌어서 인증글 목록을 새로 받아오면,
+//                기존에 보여주던 인증글들은 모두 날려주고, 다시 불러오자.
+
+                mProofList.clear()
+
                 val data = json.getJSONObject("data")
 
                 val projectObj = data.getJSONObject("project")
