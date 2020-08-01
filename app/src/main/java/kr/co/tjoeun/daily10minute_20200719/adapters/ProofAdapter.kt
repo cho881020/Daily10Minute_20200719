@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10minute_20200719.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minute_20200719.R
+import kr.co.tjoeun.daily10minute_20200719.ViewProofDetailActivity
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
@@ -113,7 +115,12 @@ class ProofAdapter(
 //        답글 버튼이 눌리면 => 답글 목록을 보는 화면으로 이동
         replyBtn.setOnClickListener {
 
-            
+            val myIntent = Intent(mContext, ViewProofDetailActivity::class.java)
+
+//            인증게시글의 id값만 넘겨서 => 상세화면에서 다시 불러오자
+            myIntent.putExtra("proof_id", data.id)
+
+            mContext.startActivity(myIntent)
 
         }
 
