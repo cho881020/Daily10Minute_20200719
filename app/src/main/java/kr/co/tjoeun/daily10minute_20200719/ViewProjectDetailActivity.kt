@@ -30,6 +30,20 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        uploadProofBtn.setOnClickListener {
+
+//            인증 등록하기 화면에서도 어떤 프로젝트에 대한 인증인지 표시
+//            프로젝트의 id값 + 프로젝트의 제목을 둘다 전달해서 단순히 표시.
+
+            val myIntent = Intent(mContext, EditProjectProofActivity::class.java)
+
+            myIntent.putExtra("projectId", mProjectId)
+            myIntent.putExtra("projectTitle", mProject.title)
+
+            startActivity(myIntent)
+
+        }
+
 //        다른 사람들의 참여 인증 확인하는 버튼
         viewOtherProofBtn.setOnClickListener {
 
