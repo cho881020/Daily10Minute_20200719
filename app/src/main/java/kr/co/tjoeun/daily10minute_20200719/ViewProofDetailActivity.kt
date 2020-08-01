@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10minute_20200719
 
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_view_proof_detail.*
 import kr.co.tjoeun.daily10minute_20200719.adapters.ReplyAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
@@ -31,6 +32,28 @@ class ViewProofDetailActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        postReplyBtn.setOnClickListener {
+
+            val inputContent = replyContentEdt.text.toString()
+
+            if (inputContent.length < 5) {
+                Toast.makeText(mContext, "댓글은 최소 5자 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+
+//                등록 거부 : 이벤트 처리 강제 종료
+                return@setOnClickListener
+            }
+
+            ServerUtil.postRequestReplyToProof(mContext, mProofId, inputContent, object : ServerUtil.JsonResponseHandler {
+                override fun onResponse(json: JSONObject) {
+
+//                    인증글 데이터를 다시 받아오자. => 댓글 목록을 새로 가져오는 효과가 있다.
+                    getProofDataFromServer()
+
+                }
+
+            })
+        }
         
     }
 
@@ -55,7 +78,9 @@ class ViewProofDetailActivity : BaseActivity() {
 
                 mProof = Proof.getProofFromJson(proof)
 
-//                같이 담겨오는 댓글목록을 처리
+//                같이 담겨오는 댓글목록을 처리 => 기존에 담겨있던 댓글들을 전부 삭제하고 처리.
+                mReplyList.clear()
+
                 val replies = proof.getJSONArray("replies")
 
                 for (i in 0 until replies.length()) {
