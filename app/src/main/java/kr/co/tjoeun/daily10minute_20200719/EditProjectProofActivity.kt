@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_edit_project_proof.*
+import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
+import org.json.JSONObject
 
 class EditProjectProofActivity : BaseActivity() {
 
@@ -39,7 +41,47 @@ class EditProjectProofActivity : BaseActivity() {
 
 //                의사가 확인 되었으니 => 서버에 게시글을 올리자.
 
+                ServerUtil.postRequestProof(mContext, mProjectId, input, object : ServerUtil.JsonResponseHandler {
+                    override fun onResponse(json: JSONObject) {
 
+//                        등록 성공 / 실패 여부 구별 필요
+                        val code = json.getInt("code")
+
+                        if (code == 200) {
+
+//                            등록 성공 케이스 => 토스트로 격려 메세지.
+//                            완주 했다면 격려 X, 축하. => 완주 여부 파악 필요
+
+                            val isProjectComplete = json.getBoolean("is_project_complete")
+
+                            runOnUiThread {
+                                if (isProjectComplete) {
+                                    Toast.makeText(mContext, "축하합니다! 프로젝트를 완주했습니다.", Toast.LENGTH_SHORT).show()
+                                }
+                                else {
+                                    Toast.makeText(mContext, "잘 하고 계십니다! 내일도 인증해주세요.", Toast.LENGTH_SHORT).show()
+                                }
+
+//                                오늘의 인증이 완료되면 입력화면 종료
+                                finish()
+                            }
+
+
+                        }
+                        else {
+//                            등록 실패 케이스 => 왜 실패했는지 서버가 주는 메세지를 토스트로
+
+                            val message = json.getString("message")
+
+                            runOnUiThread {
+                                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                            }
+
+                        }
+
+                    }
+
+                })
 
             })
             alert.setNegativeButton("취소", null)
