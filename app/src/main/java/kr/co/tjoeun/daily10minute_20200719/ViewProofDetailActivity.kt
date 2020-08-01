@@ -2,6 +2,7 @@ package kr.co.tjoeun.daily10minute_20200719
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_view_proof_detail.*
+import kr.co.tjoeun.daily10minute_20200719.adapters.ReplyAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
 import kr.co.tjoeun.daily10minute_20200719.datas.Reply
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
@@ -18,6 +19,8 @@ class ViewProofDetailActivity : BaseActivity() {
 
 //    서버에서 내려주는 댓글들을 담을 목록
     val mReplyList = ArrayList<Reply>()
+
+    lateinit var mReplyAdapter : ReplyAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +39,9 @@ class ViewProofDetailActivity : BaseActivity() {
         mProofId = intent.getIntExtra("proof_id", 0)
 
         getProofDataFromServer()
+
+        mReplyAdapter = ReplyAdapter(mContext, R.layout.reply_list_item, mReplyList)
+        replyListView.adapter = mReplyAdapter
     }
 
     fun getProofDataFromServer() {
@@ -63,6 +69,10 @@ class ViewProofDetailActivity : BaseActivity() {
                     writerNickNameTxt.text = mProof.user.nickName
                     createAtTxt.text = TimeUtil.getTimeAgoStringFromCalendar(mProof.proofTime)
                     contentTxt.text = mProof.content
+
+//                    서버 통신 과정이 어댑터 연결보다 늦게 완료될 수 있다.
+                    mReplyAdapter.notifyDataSetChanged()
+
                 }
 
             }

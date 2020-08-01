@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -26,6 +27,16 @@ class ReplyAdapter(
         }
 
         val row = tempRow!!
+
+        val writerNickNameTxt = row.findViewById<TextView>(R.id.writerNickNameTxt)
+        val contentTxt = row.findViewById<TextView>(R.id.contentTxt)
+        val likeBtn = row.findViewById<Button>(R.id.likeBtn)
+
+        val data = mList[position]
+
+        writerNickNameTxt.text = data.writer.nickName
+        contentTxt.text = data.content
+
 
         return row
     }
