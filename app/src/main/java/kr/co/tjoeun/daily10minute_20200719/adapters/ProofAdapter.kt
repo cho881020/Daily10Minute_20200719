@@ -110,6 +110,13 @@ class ProofAdapter(
 
         }
 
+//        답글 버튼이 눌리면 => 답글 목록을 보는 화면으로 이동
+        replyBtn.setOnClickListener {
+
+            
+
+        }
+
         return row
     }
 
