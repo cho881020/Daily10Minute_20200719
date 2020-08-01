@@ -79,6 +79,8 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/gray_border_box"
                 android:layout_height="wrap_content"
                 android:text="답글 0개" />
 

@@ -68,12 +68,28 @@ class ProofAdapter(
         }
 
 //        좋아요 / 답글 버튼의 문구 수정
-        likeBtn.text = "좋아요 ${data.likeCount}개"
+
         replyBtn.text = "답글 ${data.replyCount}개"
 
 //        만약, 이미 좋아요를 찍은 글이라면?
         if (data.myLike) {
             likeBtn.text = "좋아요 취소 ${data.likeCount}개"
+
+//            좋아요를 찍은 글의 테두리는 빨간색
+            likeBtn.setBackgroundResource(R.drawable.red_border_box)
+
+//            코틀린에서 글씨 색을 변경 => 빨간색으로
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.naverRed))
+
+        }
+        else {
+//            좋아요를 안누른 경우도 별도로 처리해야 => 재사용성에 의한 문제를 해결할 수 있다.
+            likeBtn.text = "좋아요 ${data.likeCount}개"
+            likeBtn.setBackgroundResource(R.drawable.gray_border_box)
+
+//            글씨색을 검정색으로
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.black))
+
         }
 
 //        좋아요 버튼 눌리는 이벤트
