@@ -186,6 +186,15 @@ class ViewProjectDetailActivity : BaseActivity() {
 //                진행률 레이아웃 표시
                 progressLayout.visibility = View.VISIBLE
 
+//                진행률 계산해서 표시하기
+
+//                진행률을 변수로 저장
+                val progress = mProject.proofCount.toDouble() / mProject.completeDays.toDouble() * 100
+
+//                계산된 진행률을 소수점 2자리만 표기하는 String으로 변경
+                val progressStr = "%.2f".format(progress)
+                progressTxt.text = "${progressStr}% (${mProject.proofCount}/${mProject.completeDays})"
+
             }
             else {
                 ongoingButtonLayout.visibility = View.GONE
@@ -194,6 +203,7 @@ class ViewProjectDetailActivity : BaseActivity() {
 //                진행률 레이아웃 숨기기 (GONE)
                 progressLayout.visibility = View.GONE
             }
+
 
         }
     }
