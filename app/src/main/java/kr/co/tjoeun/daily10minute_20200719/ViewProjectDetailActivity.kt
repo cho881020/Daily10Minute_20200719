@@ -182,10 +182,17 @@ class ViewProjectDetailActivity : BaseActivity() {
 //                참여 중 버튼들 표시, 참가 버튼 숨기기
                 ongoingButtonLayout.visibility = View.VISIBLE
                 joinProjectBtn.visibility = View.GONE
+
+//                진행률 레이아웃 표시
+                progressLayout.visibility = View.VISIBLE
+
             }
             else {
                 ongoingButtonLayout.visibility = View.GONE
                 joinProjectBtn.visibility = View.VISIBLE
+
+//                진행률 레이아웃 숨기기 (GONE)
+                progressLayout.visibility = View.GONE
             }
 
         }
