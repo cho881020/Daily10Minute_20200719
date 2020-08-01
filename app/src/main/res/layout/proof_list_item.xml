@@ -70,6 +70,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:focusable="false"
+                android:background="@drawable/gray_border_box"
                 android:layout_height="wrap_content"
                 android:text="좋아요 0개" />
 
