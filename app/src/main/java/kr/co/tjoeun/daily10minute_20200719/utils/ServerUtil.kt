@@ -473,7 +473,7 @@ class ServerUtil {
 //            GET / DELETE방식의 파라미터 첨부는 query에 담아야 함.
 //            주소에 붙여주는 방식 => 쉽게 가공하도록 도와주는 변수 생성.
             val urlBuilder = "${BASE_URL}/notification".toHttpUrlOrNull()!!.newBuilder()
-//            urlBuilder.addEncodedQueryParameter("이름표", "전달값")
+            urlBuilder.addEncodedQueryParameter("need_all_notis", "true")
 
 
 //            주소 가공이 끝나면 최종 String으로 변환.
