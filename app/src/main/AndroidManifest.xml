@@ -12,7 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NotificationListActivity"></activity>
+        <service
+            android:name=".fcm.MyFCMService"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+
+        </service>
+
+        <activity android:name=".NotificationListActivity" />
         <activity android:name=".EditProjectProofActivity" />
         <activity android:name=".ViewProofDetailActivity" />
         <activity android:name=".ViewProjectProofListActivity" />
