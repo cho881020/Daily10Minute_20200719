@@ -2,7 +2,9 @@ package kr.co.tjoeun.daily10minute_20200719
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10minute_20200719.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
@@ -20,6 +22,8 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         setupEvents()
         setValues()
+
+        Log.d("디바이스토큰", FirebaseInstanceId.getInstance().token)
     }
 
     
