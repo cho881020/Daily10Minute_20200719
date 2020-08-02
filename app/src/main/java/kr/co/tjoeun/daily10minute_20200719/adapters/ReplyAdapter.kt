@@ -13,6 +13,7 @@ import kr.co.tjoeun.daily10minute_20200719.R
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
 import kr.co.tjoeun.daily10minute_20200719.datas.Reply
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
+import kr.co.tjoeun.daily10minute_20200719.utils.TimeUtil
 import org.json.JSONObject
 
 class ReplyAdapter(
@@ -34,11 +35,15 @@ class ReplyAdapter(
         val contentTxt = row.findViewById<TextView>(R.id.contentTxt)
         val likeBtn = row.findViewById<Button>(R.id.likeBtn)
         val likeCountTxt = row.findViewById<TextView>(R.id.likeCountTxt)
+        val writtenTimeTxt = row.findViewById<TextView>(R.id.writtenTimeTxt)
 
         val data = mList[position]
 
         writerNickNameTxt.text = data.writer.nickName
         contentTxt.text = data.content
+
+//        작성 시간 표시
+        writtenTimeTxt.text = TimeUtil.getTimeAgoStringFromCalendar(data.createdAt)
 
 //        좋아요 갯수 처리 -> 0개면 숨김, 그 이상이면 보여주고 갯수 반영
         if (data.likeCount == 0) {
