@@ -32,11 +32,21 @@ class ReplyAdapter(
         val writerNickNameTxt = row.findViewById<TextView>(R.id.writerNickNameTxt)
         val contentTxt = row.findViewById<TextView>(R.id.contentTxt)
         val likeBtn = row.findViewById<Button>(R.id.likeBtn)
+        val likeCountTxt = row.findViewById<TextView>(R.id.likeCountTxt)
 
         val data = mList[position]
 
         writerNickNameTxt.text = data.writer.nickName
         contentTxt.text = data.content
+
+//        좋아요 갯수 처리 -> 0개면 숨김, 그 이상이면 보여주고 갯수 반영
+        if (data.likeCount == 0) {
+            likeCountTxt.visibility = View.GONE
+        }
+        else {
+            likeCountTxt.visibility = View.VISIBLE
+            likeCountTxt.text = "좋아요 ${data.likeCount}개"
+        }
 
         likeBtn.setOnClickListener {
 
