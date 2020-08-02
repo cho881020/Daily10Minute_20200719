@@ -10,6 +10,13 @@
         android:textColor="@color/white"
         android:text="하루 10분 프로젝트"
         android:textSize="20sp"
+        android:visibility="gone"
         android:layout_gravity="center"/>
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_gravity="center"
+        android:layout_height="20dp"
+        android:src="@drawable/company_logo" />
 
 </FrameLayout>
