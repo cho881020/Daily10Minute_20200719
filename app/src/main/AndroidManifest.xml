@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditProjectProofActivity"></activity>
+        <activity android:name=".NotificationListActivity"></activity>
+        <activity android:name=".EditProjectProofActivity" />
         <activity android:name=".ViewProofDetailActivity" />
         <activity android:name=".ViewProjectProofListActivity" />
         <activity android:name=".ViewOngoingUsersActivity" />
