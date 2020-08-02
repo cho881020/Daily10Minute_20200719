@@ -46,8 +46,11 @@ class NotificationListActivity : BaseActivity() {
 
                 }
 
+                runOnUiThread {
+
 //                배열에 목록이 모두 추가되면 => 새로고침
-                mNotiAdapter.notifyDataSetChanged()
+                    mNotiAdapter.notifyDataSetChanged()
+                }
 
             }
 
