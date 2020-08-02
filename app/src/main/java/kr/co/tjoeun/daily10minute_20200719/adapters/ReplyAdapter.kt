@@ -36,6 +36,7 @@ class ReplyAdapter(
         val likeBtn = row.findViewById<Button>(R.id.likeBtn)
         val likeCountTxt = row.findViewById<TextView>(R.id.likeCountTxt)
         val writtenTimeTxt = row.findViewById<TextView>(R.id.writtenTimeTxt)
+        val writeReplyTxt = row.findViewById<TextView>(R.id.writeReplyTxt)
 
         val data = mList[position]
 
@@ -107,6 +108,14 @@ class ReplyAdapter(
                 }
 
             })
+
+        }
+
+//        텍스트뷰 / 이미지뷰 / 리니어레이아웃 등의 특이한 이벤트가 없는 모든 뷰들은
+//        onClickListener 이벤트처리가 가능하다.
+        writeReplyTxt.setOnClickListener {
+
+            Toast.makeText(mContext, "아직 준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
 
         }
 
