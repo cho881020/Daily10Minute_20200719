@@ -26,10 +26,11 @@ class NotificationListActivity : BaseActivity() {
 
     override fun setValues() {
 
+        getNotificationListFromServer()
+
         mNotiAdapter = NotificationAdapter(mContext, R.layout.notification_list_item, mNotiList)
         notificationListView.adapter = mNotiAdapter
 
-        getNotificationListFromServer()
     }
 
     fun getNotificationListFromServer() {
@@ -45,6 +46,10 @@ class NotificationListActivity : BaseActivity() {
                     mNotiList.add(Notification.getNotificationFromJson(notifications.getJSONObject(i)))
 
                 }
+
+//                받아 온 모든 알림중 최신 알림의 id값을 서버에 전달 => 여기까지 읽음 처리
+                ServerUtil.postRequestNotification(mContext, mNotiList[0].id, null)
+
 
                 runOnUiThread {
 
