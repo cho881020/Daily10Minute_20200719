@@ -22,6 +22,42 @@ class MainActivity : BaseActivity() {
         setValues()
     }
 
+    
+//    메인화면에 들어올때마다 (다른 곳에 갔다 올때) 실행되는 함수
+    
+    override fun onResume() {
+        super.onResume()
+
+        ServerUtil.getRequestUnreadNotiCount(mContext, object : ServerUtil.JsonResponseHandler {
+            override fun onResponse(json: JSONObject) {
+
+                val data = json.getJSONObject("data")
+
+//                안읽은 알림 갯수 추출
+                val unreadNotiCount = data.getInt("unread_noti_count")
+
+//                갯수에 따른 UI 변경사항
+
+                runOnUiThread {
+
+//                    0개 : 알림 갯수 숨겨주기
+//                    그 외 : 보여주고 + 갯수 반영
+                    if (unreadNotiCount == 0) {
+                        notiCountTxt.visibility = View.GONE
+                    }
+                    else {
+                        notiCountTxt.visibility = View.VISIBLE
+                        notiCountTxt.text = unreadNotiCount.toString()
+                    }
+
+                }
+
+            }
+
+        })
+        
+    }
+
     override fun setupEvents() {
 
 //        알림 이미지뷰를 누르면 알림 목록 화면으로 이동
